@@ -1,0 +1,59 @@
+{%extends 'base.html'%} {%block head%}
+<link
+    rel="stylesheet"
+    href=" {{ url_for('static', filename='css/sellitem.css')}} " />
+<title>Sell {{item.name}}</title
+>{%endblock%} {%block body%}
+<div>
+    <div class="container">
+        <div class="form-main">
+            <h1>Sell {{item.name}}</h1>
+    <form
+        action="{{url_for('sell',id=item.itemid)}}"
+        method="POST"
+        >
+        <div class="form-in">
+        <label for="name">Item name :</label>
+        <input
+            id="name"
+            name="name"
+            type="text"
+            placeholder="Item Name"
+            value="{{item.name}}"
+            disabled />
+        <label for="partno">Part No. :</label>
+        <input
+            id="partno"
+            name="partno"
+            type="text"
+            placeholder="Part No."
+            value="{{item.partno}}"
+            disabled />
+        <label for="qty">Quantity in stock :</label>
+        <input
+            id="qty"
+            name="qty"
+            type="number"
+            placeholder="Quantity"
+            value="{{item.quantity}}"
+            disabled />
+        <label for="sellqty">Sell :</label>
+        <input
+            id="sellqty"
+            name="sellqty"
+            type="number"
+            min="0"
+            max="{{item.quantity}}"
+            placeholder="Sell" />
+           
+    </div>
+    <br>
+    <div class="form-but">
+        
+        <button class="btn btn-primary" type="submit">Sell</button>
+    </div>
+    </form>
+</div>
+</div>
+</div>
+{%endblock%}

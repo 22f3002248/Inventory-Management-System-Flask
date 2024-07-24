@@ -1,0 +1,141 @@
+{%extends 'base.html'%}
+
+{%block head%}
+<title>Checkout</title>
+<link
+    rel="stylesheet"
+    href=" {{ url_for('static', filename='css/userhome.css')}} " />
+    <style>
+        form label {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+    </style>
+
+{%endblock%} {%block body%}
+<div>
+    <br />
+    <div class="container" style="width: 1100px;">
+        <div class="heading" style="text-align: center">
+            <h1
+                style="
+                    text-align: center;
+                    color: #845ec2;
+                    margin-top: 10px;
+                    margin-bottom: 20px;
+                    border: 2px solid white;
+                    border-radius: 5px;
+                    background-color: #d5cabd;
+                    box-shadow: 2px 2px 8px #845ec2;
+                    padding: 5px;
+                    text-shadow: 2px 2px 4px white;
+                "
+                class="mx-auto">
+                Checkout
+            </h1>
+        </div>
+        <br />
+        <div class="card" style="  box-shadow: 2px 2px 8px #845ec2;">
+            {%if cartitems%}
+            <ol class="list-group list-group-numbered">
+                {%for ci in cartitems%} {% for item in items %} {%if
+                ci.itemid==item.itemid%}
+                <li
+                    class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-4 me-auto">
+                        <div class="fw-bold">{{item.name}}</div>
+                        <a>
+                            <small> Price : {{item.price}} Rs. Per unit </small>
+                        </a>
+                        <br />
+                    </div>
+                    <div class="my-auto" style="display: flex">
+                        <span
+                            class="badge text-bg-primary rounded-pill my-auto"
+                            style="height: 100%">
+                            Qty : {{ci.qty}}
+                        </span>
+                        <span style="margin-left: 5px"> </span>
+                        <span
+                            class="badge text-bg-warning rounded-pill my-auto">
+                            Total Price : <br />{{item.price * ci.qty}} Rs.
+                        </span>
+                        <span style="margin-left: 5px"> </span>
+                    </div>
+                </li>
+                {%endif%} {% endfor %} {% endfor %}
+            </ol>
+            {%else%}
+            <p>Cart is empty !</p>
+            {%endif%}
+            <br>
+            <div style="text-align: center">
+                <div style="  box-shadow: 2px 2px 8px #845ec2; width:400px; margin: 0 auto; padding:15px">
+                <a> ~ </a>
+                <a>
+                    Total Quantity :
+                    <i><strong>{{totalqty}}</strong></i>
+                </a>
+                <a> ~ | ~ </a>
+                <a>
+                    Total Price :
+                    <i><strong>{{totalprice}}</strong></i>
+                </a>
+                <a> ~ </a>
+            </div>
+            </div>
+            <br>
+            <div style="text-align: center;" >
+                <div style=" width:600px; margin: 0 auto;">
+                <br />
+                <a style="color: #845ec2; font-size:1.5rem; text-decoration:underline  #845ec2; "><b>Please fill in customer information :</b> </a><br /><br />
+                <form
+                    action="{{url_for('checkout', cartid=cartid)}}"
+                    method="POST">
+                    <label style="margin-bottom: 7px;" for="customername">Customer Name :</label>
+                    <br />
+                    <input
+                        type="text"
+                        id="customername"
+                        name="customername"
+                        placeholder="Customer Name"
+                        style="width: 250px;" />
+                    <br />
+                    <br>
+                    <label style="margin-bottom: 7px;" for="customeraddress">Customer Address :</label>
+                    <br />
+                    <textarea
+                        name="customeraddress"
+                        id="customeraddress"
+                        placeholder="Customer Address"
+                        style="width: 250px;">
+...</textarea
+                    >
+                    <br />
+                    <br>
+                    
+                    <label style="margin-bottom: 7px;" for="customername">Customer GSTIN :</label>
+                    <br />
+                    <input
+                        type="text"
+                        id="customergstin"
+                        name="customergstin"
+                        placeholder="Customer GSTIN" 
+                        style="width: 250px;"/>
+                    <br /><br />
+                    <button type="submit" class="btn btn-primary btn-xl">
+                        Complete Order
+                    </button>
+                    <br>
+                    <br>
+                    
+                </form>
+                <br>
+            </div>
+           
+            </div>
+        </div>
+    </div>
+</div>
+
+{%endblock%}

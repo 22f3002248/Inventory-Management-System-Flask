@@ -1,0 +1,98 @@
+{%extends 'base.html'%} {%block head%}
+
+<title>All categories</title>
+<style>
+    .max-width-td {
+        max-width: 150px; /* Adjust the value as needed */
+        overflow: hidden; /* Optional: hide overflowing content */
+        /*white-space: nowrap; /* Optional: prevent wrapping */
+        text-overflow: ellipsis; /* Optional: display ellipsis for overflowing content */
+    }
+
+    .btn-primary,
+    .btn-primary:hover,
+    .btn-primary:active,
+    .btn-primary:visited {
+        background-color: #845ec2;
+        border: white;
+    }
+    .btn-primary:hover {
+        background-color: #5422a4;
+    }
+</style>
+{%endblock%} {%block body%}
+
+<div>
+    <div class="container">
+        <br />
+        <div style="text-align: center">
+            <h1
+                style="
+                    text-align: center;
+                    color: #845ec2;
+                    margin-top: 10px;
+                    margin-bottom: 20px;
+                    border: 2px solid white;
+                    background-color: #d5cabd;
+                    border-radius: 5px;
+                    box-shadow: 2px 2px 8px #845ec2;
+                    padding: 5px;
+                    text-shadow: 2px 2px 4px white;
+                ">
+                All Categories
+            </h1>
+        </div>
+        <br />
+        <table
+            class="table table-hover align-middle"
+            style="
+                text-align: center;
+                border: 2px solid #845ec2;
+                box-shadow: 2px 2px 5px#bea7e3;
+            ">
+            <thead>
+                <tr>
+                    <th style="color: #845ec2; font-size: 1.4rem">
+                        Category ID
+                    </th>
+                    <th style="color: #845ec2; font-size: 1.4rem">
+                        Category Name
+                    </th>
+                    <th style="color: #845ec2; font-size: 1.4rem">Operation</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cat in cats %}
+
+                <tr>
+                    <td class="max-width-td">
+                        <i><strong>{{ cat.catid }}</strong></i>
+                    </td>
+                    <td>
+                        <a>{{ cat.name }}</a>
+                    </td>
+                    <td>
+                        {%if currentuser.role=='admin'%}
+                        <a
+                            href="{{url_for('updatecategory', catid=cat.catid)}}"
+                            class="btn btn-primary btn-sm col-3 mb-1">
+                            Update
+                        </a>
+
+                        {%endif%}
+                        <a
+                            href="{{url_for('opencategory',name=cat.name)}}"
+                            class="btn btn-primary btn-sm col-3 mb-1">
+                            Open
+                        </a>
+                    </td>
+                </tr>
+
+                {% endfor %}
+            </tbody>
+        </table>
+        <br /><br />
+    </div>
+</div>
+
+{%endblock%}

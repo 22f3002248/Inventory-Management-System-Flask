@@ -1,0 +1,84 @@
+.container{
+    height: 650px;
+    width: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;  
+}
+body{
+    background-color: #B0A8B9;
+}
+h1{
+    color: #845EC2;
+    margin-top: 10px;
+    margin-bottom: 65px;
+    border: 2px solid white;
+    border-radius: 5px;
+    padding: 5px;
+    box-shadow: 2px 2px 8px #845EC2;
+    text-shadow: 2px 2px 4px white;
+}
+.form-main{
+    height: 575px;
+    width: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid white;
+    background-color: #D5CABD;
+    flex-direction: column;
+    border-radius: 1rem;
+    box-shadow: 2px 2px 8px white;
+}
+.form-in  {
+    height: 180px;
+    width: 400px;   
+    display: flex; 
+    flex-direction: column;
+    align-content: space-evenly;
+    justify-content: center;
+    align-items: center;
+    margin-left: 15px;
+    margin-bottom: 20px;
+    background-color: #D5CABD;
+    margin-top: 20px;
+
+}
+.form-in input{
+    width: 250px;
+    height: 40px;
+    margin-top: 5px;
+    border-radius: 0.5rem;
+    border: white;
+    margin-bottom: 20px;
+}
+
+
+
+
+
+.form-but{
+    width: 400px; 
+    display: flex;
+    justify-content: center;
+    margin-left: 15px;
+    margin-bottom: 20px;
+    background-color: #D5CABD;
+    margin-top: 20px;
+    
+}
+.form-but  button{
+    
+        width: 250px;
+        height: 40px;
+        color: white;
+        background-color: #845EC2;
+        font-weight: bold;
+        border-radius: 0.5rem;
+        border: 1px solid white;
+}
+
+.form-but button:hover{
+    background-color: white;
+    color: #744eb0;
+ }

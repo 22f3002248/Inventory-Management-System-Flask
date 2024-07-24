@@ -1,0 +1,46 @@
+{%extends 'base.html'%} {%block head%}<title>Login</title>{%endblock%} {%block
+body%}
+<div>
+    <h1>Stock product</h1>
+    <br />
+    <form
+        action="{{url_for('stock',id=item.itemid)}}"
+        method="POST"
+        class="form-control">
+        <label for="name">Item name :</label><br />
+        <input
+            id="name"
+            name="name"
+            type="text"
+            placeholder="Item Name"
+            value="{{item.name}}"
+            disabled /><br />
+        <label for="partno">Part No. :</label><br />
+        <input
+            id="partno"
+            name="partno"
+            type="text"
+            placeholder="Part No."
+            value="{{item.partno}}"
+            disabled /><br />
+        <label for="qty">Old Quantity :</label><br />
+        <input
+            id="qty"
+            name="qty"
+            type="number"
+            placeholder="Quantity"
+            value="{{item.quantity}}"
+            disabled /><br />
+        <label for="stqty">Add Stock :</label><br />
+        <input
+            id="stqty"
+            name="stqty"
+            type="number"
+            placeholder="Add Stock"
+            min="1"
+            max="999" /><br />
+        <br />
+        <button class="btn btn-primary" type="submit">Stock up</button>
+    </form>
+</div>
+{%endblock%}

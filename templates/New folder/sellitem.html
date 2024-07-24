@@ -1,0 +1,46 @@
+{%extends 'base.html'%} {%block head%}<title>Sell {{item.name}}</title
+>{%endblock%} {%block body%}
+<div>
+    <h1>Sell {{item.name}}</h1>
+    <br />
+    <form
+        action="{{url_for('sell',id=item.itemid)}}"
+        method="POST"
+        class="form-control">
+        <label for="name">Item name :</label><br />
+        <input
+            id="name"
+            name="name"
+            type="text"
+            placeholder="Item Name"
+            value="{{item.name}}"
+            disabled /><br />
+        <label for="partno">Part No. :</label><br />
+        <input
+            id="partno"
+            name="partno"
+            type="text"
+            placeholder="Part No."
+            value="{{item.partno}}"
+            disabled /><br />
+        <label for="qty">Quantity in stock :</label><br />
+        <input
+            id="qty"
+            name="qty"
+            type="number"
+            placeholder="Quantity"
+            value="{{item.quantity}}"
+            disabled /><br />
+        <label for="sellqty">Sell :</label><br />
+        <input
+            id="sellqty"
+            name="sellqty"
+            type="number"
+            min="0"
+            max="{{item.quantity}}"
+            placeholder="Sell" /><br />
+        <br />
+        <button class="btn btn-primary" type="submit">Sell</button>
+    </form>
+</div>
+{%endblock%}

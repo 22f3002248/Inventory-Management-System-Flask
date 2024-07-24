@@ -1,0 +1,93 @@
+.container{
+    height: 500px;
+    width: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;  
+}
+body{
+    background-color: #B0A8B9;
+}
+h1{
+    color: #845EC2;
+    margin-top: 10px;
+    border: 2px solid white;
+    border-radius: 5px;
+    box-shadow: 2px 2px 8px #845EC2;
+    text-shadow: 2px 2px 4px white;
+    padding: 5px;
+}
+.form-main{
+    height: 400px;
+    width: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid white;
+    background-color: #D5CABD;
+    flex-direction: column;
+    border-radius: 1rem;
+    box-shadow: 2px 2px 8px white;
+}
+.form-in  {
+    margin-top: 50px; /* if we want to add description delete this */
+    height: 40px;
+    width: 400px;   
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 15px;
+    margin-bottom: 20px;
+    background-color: #D5CABD;
+
+}
+.form-in input{
+    width: 250px;
+    height: 40px;
+    border-radius: 0.5rem;
+    border: white
+}
+
+
+.form-but{
+    width: 400px; 
+    display: flex;
+    justify-content: center;
+    margin-left: 15px;
+    margin-bottom: 20px;
+    background-color: #D5CABD;
+    
+}
+.form-but  button{
+    
+        width: 250px;
+        height: 40px;
+        color: white;
+        background-color: #845EC2;
+        font-weight: bold;
+        border-radius: 0.5rem;
+        border: 1px solid white;
+}
+
+.form-but button:hover{
+    background-color: white;
+    color: #744eb0;
+ }
+
+.form-desc {
+    margin-left: 15px;
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px; 
+}
+textarea{
+    border: 2px solid white;
+    border-radius: 0.5rem;
+    width: 250px;
+}
+textarea::placeholder{
+    color: rgb(92, 85, 85);
+}

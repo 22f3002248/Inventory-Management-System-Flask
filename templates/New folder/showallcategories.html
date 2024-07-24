@@ -1,0 +1,90 @@
+{%extends 'base.html'%} {%block head%}
+
+<title>All categories</title>
+<style>
+    .max-width-td {
+        max-width: 150px; /* Adjust the value as needed */
+        overflow: hidden; /* Optional: hide overflowing content */
+        /*white-space: nowrap; /* Optional: prevent wrapping */
+        text-overflow: ellipsis; /* Optional: display ellipsis for overflowing content */
+    }
+
+    .btn-primary,
+    .btn-primary:hover,
+    .btn-primary:active,
+    .btn-primary:visited {
+        background-color: #845ec2;
+        border: white;
+    }
+    .btn-primary:hover {
+        background-color: #5422a4;
+    }
+</style>
+{%endblock%} {%block body%}
+
+<div>
+    <div class="container">
+        <br />
+        <div class="heading" style="text-align: center">
+            <h1
+                style="
+                    text-align: center;
+                    font-weight: bold;
+                    border: 2px solid black;
+                    box-shadow: 2px 2px 5px black;
+                    display: inline-block;
+                    padding: 1rem;
+                "
+                class="mx-auto">
+                All Categories
+            </h1>
+        </div>
+        <br />
+        {%if currentuser.role=='admin'%}
+        <div>
+            <a class="btn btn-primary" href="{{url_for('add_new_product')}}"
+                >Add new product</a
+            >
+            <a class="btn btn-primary" href="{{url_for('add_new_category')}}"
+                >Add new catergory</a
+            >
+        </div>
+        {%endif%}
+        <br />
+        <table class="table table-hover">
+            <tr>
+                <th>Category ID</th>
+                <th>Category Name</th>
+                <th>Operation</th>
+            </tr>
+            {% for cat in cats %}
+            <tr>
+                <td class="max-width-td">
+                    <i><strong>{{ cat.catid }}</strong></i>
+                </td>
+                <td>
+                    <a>{{ cat.name }}</a>
+                </td>
+                <td>
+                    {%if currentuser.role=='admin'%}
+                    <a
+                        href="{{url_for('updatecategory', catid=cat.catid)}}"
+                        class="btn btn-primary btn-sm col-3 mb-1">
+                        Update
+                    </a>
+
+                    {%endif%}
+                    <a
+                        href="{{url_for('opencategory',name=cat.name)}}"
+                        class="btn btn-primary btn-sm col-3 mb-1">
+                        Open
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        <br /><br />
+    </div>
+</div>
+
+{%endblock%}

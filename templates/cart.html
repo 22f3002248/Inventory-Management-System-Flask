@@ -1,0 +1,143 @@
+{%extends 'base.html'%}
+<link
+    rel="stylesheet"
+    href=" {{ url_for('static', filename='css/userhome.css')}} " />
+{%block head%}
+<title>Cart</title>
+{%endblock%} {%block body%}
+<div>
+    <br />
+    <div class="container">
+        <div class="heading" style="text-align: center">
+            <h1
+                style="
+                    text-align: center;
+                    color: #845ec2;
+                    margin-top: 10px;
+                    margin-bottom: 20px;
+                    border: 2px solid white;
+                    border-radius: 5px;
+                    background-color: #d5cabd;
+                    box-shadow: 2px 2px 8px #845ec2;
+                    padding: 5px;
+                    text-shadow: 2px 2px 4px white;
+                "
+                class="mx-auto">
+                Cart
+            </h1>
+        </div>
+        <br />
+        <div>
+            {%if cartitems%}
+            <ol class="list-group list-group-numbered">
+                {%for ci in cartitems%} {% for item in items %} {%if
+                ci.itemid==item.itemid%}
+                <li
+                    class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-4 me-auto">
+                        <div class="fw-bold">{{item.name}}</div>
+                        <a>
+                            <small> Price : {{item.price}} Rs. Per unit </small>
+                        </a>
+                        <br />
+                        <form
+                            action="{{url_for('updatecart',itemid=ci.itemid)}}"
+                            style="display: inline-block"
+                            method="POST">
+                            <div class="input-group mb-3">
+                                <span
+                                    class="input-group-text"
+                                    style="height: 29px; border: 2px solid grey"
+                                    >Qty</span
+                                >
+                                <input
+                                    type="number"
+                                    max="{{ item.quantity }}"
+                                    min="0"
+                                    id="incqty"
+                                    name="incqty"
+                                    class="form-control"
+                                    placeholder="Qty"
+                                    value="{{ci.qty}}"
+                                    style="
+                                        width: 70px;
+                                        height: 29px;
+                                        display: inline-block;
+                                        border: 2px solid grey;
+                                    " />
+                            </div>
+                        </form>
+                    </div>
+                    <div class="my-auto" style="display: flex">
+                        <span
+                            class="badge text-bg-primary rounded-pill my-auto"
+                            style="height: 100%; font-size: medium">
+                            Qty : {{ci.qty}}
+                        </span>
+                        <span style="margin-left: 5px"> </span>
+                        <span
+                            class="badge text-bg-warning rounded-pill my-auto"
+                            style="font-size: medium">
+                            Total Price : <br />{{item.price * ci.qty}} Rs.
+                        </span>
+                        <span style="margin-left: 5px"> </span>
+                        <a
+                            href="{{url_for('deletecartitem',itemid=ci.itemid)}}"
+                            class="btn btn-danger me-1 btn-sm my-auto"
+                            style="
+                                --bs-btn-padding-y: 0.2rem;
+                                --bs-btn-padding-x: 0.3rem;
+                                --bs-btn-font-size: 0.7rem;
+                                font-size: medium;
+                            ">
+                            X
+                        </a>
+                    </div>
+                </li>
+                {%endif%} {% endfor %}{% endfor %}
+            </ol>
+            <div
+                style="
+                    text-align: center;
+                    color: #4b356e;
+                    margin-top: 10px;
+                    margin-bottom: 20px;
+                    border: 2px solid white;
+                    border-radius: 5px;
+                    background-color: #d5cabd;
+                    box-shadow: 2px 2px 8px #845ec2;
+                    padding: 5px;
+                ">
+                <p style="font-size: large; text-shadow: 2px 2px 4px white">
+                    Do you want to checkout ?
+                </p>
+                <a
+                    href="{{url_for('checkout',cartid=usercart.cartid)}}"
+                    class="btn btn-success"
+                    >Checkout</a
+                >
+            </div>
+            {%else%}
+            <div
+                style="
+                    text-align: center;
+                    color: #634494;
+                    font-size: larger;
+                    margin-top: 10px;
+                    margin-bottom: 20px;
+                    border: 2px solid white;
+                    border-radius: 5px;
+                    background-color: #d5cabd;
+                    box-shadow: 2px 2px 8px #845ec2;
+                    padding: 5px;
+                    text-shadow: 2px 2px 4px white;
+                ">
+                <p>Your cart is empty !</p>
+            </div>
+
+            {%endif%}
+        </div>
+    </div>
+</div>
+
+{%endblock%}

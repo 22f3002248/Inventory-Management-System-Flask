@@ -1,0 +1,203 @@
+{%extends 'base.html'%} {%block head%}
+
+<title>Admin Home</title>
+<style>
+    .max-width-td {
+        max-width: 150px; /* Adjust the value as needed */
+        overflow: hidden; /* Optional: hide overflowing content */
+        /*white-space: nowrap; /* Optional: prevent wrapping */
+        text-overflow: ellipsis; /* Optional: display ellipsis for overflowing content */
+    }
+    .main-div {
+        /*background-color: #d5cabd;*/
+        font-family: sans-serif;
+    }
+    .container {
+        height: 700px;
+        width: 1100px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+    .card-title {
+        text-align: center;
+        color: #442772;
+        font-weight: bold;
+    }
+    .card-text {
+        text-align: center;
+    }
+    .card {
+        border-radius: 0.5rem;
+        height: 18rem; /* change height & width if text desc. or img size is large*/
+        width: 18rem;
+    }
+    .card img {
+        border-radius: 0.5rem;
+    }
+    .card:hover {
+        box-shadow: 3px 3px 8px #845ec2;
+        height: 18.1rem;
+        width: 18.1rem;
+    }
+</style>
+{%endblock%} {%block body%}
+
+<div>
+    <br />
+    <div style="text-align: center">
+        <h1
+            style="
+                text-align: center;
+                color: #845ec2;
+                margin-top: 10px;
+                margin-bottom: 20px;
+                border: 2px solid white;
+                border-radius: 5px;
+                background-color: #d5cabd;
+                box-shadow: 2px 2px 8px #845ec2;
+                padding: 5px;
+                text-shadow: 2px 2px 4px white;
+            ">
+            Admin Home
+        </h1>
+    </div>
+    <br />
+    <div class="container">
+        <div>
+            <a
+                href="{{url_for('add_new_product')}}"
+                style="text-decoration: none; color: black">
+                <div
+                    class="card"
+                    style="align-items: center; text-align: center">
+                    <img
+                        src="{{url_for('static',filename='/css/Inventory-management.jpg')}}"
+                        class="card-img-top"
+                        style="height: 10rem; width: 70%"
+                        alt="..." />
+                    <div class="card-body">
+                        <h5 class="card-title">Add new product</h5>
+                        <p class="card-text">
+                            add new products in the item section.
+                        </p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div>
+            <a
+                href="{{url_for('add_new_category')}}"
+                style="text-decoration: none; color: black">
+                <div
+                    class="card"
+                    style="align-items: center; text-align: center">
+                    <img
+                        src="{{url_for('static',filename='/css/Inventory-management.jpg')}}"
+                        class="card-img-top"
+                        style="height: 10rem; width: 70%"
+                        alt="..." />
+                    <div class="card-body">
+                        <h5 class="card-title">Add new catergory</h5>
+                        <p class="card-text">
+                            add new category in the inventory.
+                        </p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div>
+            <a
+                href="{{url_for('show_all_requests')}}"
+                style="text-decoration: none; color: black">
+                <div
+                    class="card"
+                    style="align-items: center; text-align: center">
+                    <img
+                        src="{{url_for('static',filename='/css/Inventory-management.jpg')}}"
+                        class="card-img-top"
+                        style="height: 10rem; width: 70%"
+                        alt="..." />
+                    <div class="card-body">
+                        <h5 class="card-title">Show all requests</h5>
+                        <p class="card-text">
+                            show all request and perform operations.
+                        </p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div>
+            <a
+                href="{{url_for('show_all_items')}}"
+                style="text-decoration: none; color: black">
+                <div
+                    class="card"
+                    style="align-items: center; text-align: center">
+                    <img
+                        src="{{url_for('static',filename='/css/Inventory-management.jpg')}}"
+                        class="card-img-top"
+                        style="height: 10rem; width: 70%"
+                        alt="..." />
+                    <div class="card-body">
+                        <h5 class="card-title">Show all products</h5>
+                        <p class="card-text">
+                            show all products and perform operation like sell ,
+                            request, delete etc.
+                        </p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div>
+            <a
+                href="{{url_for('show_all_categories')}}"
+                style="text-decoration: none; color: black">
+                <div
+                    class="card"
+                    style="align-items: center; text-align: center">
+                    <img
+                        src="{{url_for('static',filename='/css/Inventory-management.jpg')}}"
+                        class="card-img-top"
+                        style="height: 10rem; width: 70%"
+                        alt="..." />
+                    <div class="card-body">
+                        <h5 class="card-title">Show all catergories</h5>
+                        <p class="card-text">
+                            show all category and perform operation like update
+                            and open.
+                        </p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div>
+            <a
+                href="{{url_for('analyze')}}"
+                style="text-decoration: none; color: black">
+                <div
+                    class="card"
+                    style="align-items: center; text-align: center">
+                    <img
+                        src="{{url_for('static',filename='/css/Inventory-management.jpg')}}"
+                        class="card-img-top"
+                        style="height: 10rem; width: 70%"
+                        alt="..." />
+                    <div class="card-body">
+                        <h5 class="card-title">Statistics</h5>
+                        <p class="card-text">
+                            See the analytics of sales of inventory.
+                        </p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+{%endblock%}

@@ -1,0 +1,30 @@
+{%extends 'base.html'%} {%block head%}<title>Update Category</title>{%endblock%}
+{%block body%}
+<div>
+    <h1>Update Category</h1>
+    <br />
+    <form
+        action="{{url_for('updatecategory',catid=cat.catid)}}"
+        method="POST"
+        class="form-control">
+        <label for="category">Category Name :</label><br />
+        <input
+            id="category"
+            name="category"
+            type="text"
+            placeholder="Category Name"
+            value="{{cat.name}}" /><br /><br />
+        <label for="description">Category Description :</label><br />
+        <textarea
+            id="description"
+            name="description"
+            placeholder="Category Description"
+            rows="4"
+            cols="40">
+{{cat.description}}
+        </textarea
+        ><br />
+        <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+</div>
+{%endblock%}

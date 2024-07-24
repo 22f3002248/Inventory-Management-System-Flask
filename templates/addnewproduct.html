@@ -1,0 +1,78 @@
+{%extends 'base.html'%} {%block head%}
+<title>Add New Product</title>
+<link
+    rel="stylesheet"
+    href=" {{ url_for('static', filename='css/addnewproduct.css')}} " />
+{%endblock%} {%block body%}
+
+<br /><br /><br /><br /><br /><br />
+<div class="container">
+    <div class="form-main">
+        <h1>Add New Product</h1>
+        <form method="POST" enctype="multipart/form-data">
+            <div class="form-in">
+                <input
+                    id="name"
+                    name="name"
+                    type="text"
+                    placeholder="Item Name"
+                    required />
+                <textarea
+                    id="description"
+                    name="description"
+                    rows="8"
+                    cols="30"
+                    required>
+Item Description
+                </textarea>
+                <input
+                    id="partno"
+                    name="partno"
+                    type="text"
+                    placeholder="Part No."
+                    required />
+                <input
+                    id="qty"
+                    name="qty"
+                    type="number"
+                    placeholder="Quantity"
+                    required />
+                <input
+                    id="price"
+                    name="price"
+                    type="number"
+                    placeholder="Price"
+                    step=".01"
+                    required />
+                <input
+                    id="location"
+                    name="location"
+                    type="text"
+                    placeholder="Location" />
+                <input
+                    type="file"
+                    id="photo"
+                    name="photo"
+                    placeholder="Select photo" />
+            </div>
+
+            <div class="form-set">
+                <select
+                    id="category"
+                    name="category"
+                    class="form-select"
+                    required>
+                    <option selected disabled>Category</option>
+                    {% for cat in categories %}
+                    <option value="{{cat.catid}}">{{cat.name}}</option>
+                    {% endfor %}
+                </select>
+                <br />
+            </div>
+            <div class="form-but">
+                <button class="btn" type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+{%endblock%}

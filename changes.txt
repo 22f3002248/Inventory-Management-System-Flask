@@ -1,0 +1,7 @@
+style the following pages
+analysis.html
+checkout.html
+item.html
+search.html (make searchbar look better)
+
+test other parts of application which need styling.

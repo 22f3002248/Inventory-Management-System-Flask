@@ -1,0 +1,23 @@
+.card {
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+}
+
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:visited {
+    background-color: #845ec2;
+    border: white;
+}
+.btn-primary:hover {
+    background-color: #5422a4;
+}
+h1 {
+    text-align: center;
+    font-weight: bold;
+    border: 2px solid black;
+    box-shadow: 2px 2px 5px black;
+    display: inline-block;
+    padding: 1rem;
+}

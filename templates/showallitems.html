@@ -1,0 +1,225 @@
+{%extends 'base.html'%} {%block head%}
+
+<title>Admin Home</title>
+<style>
+    .max-width-td {
+        max-width: 150px; /* Adjust the value as needed */
+        overflow: hidden; /* Optional: hide overflowing content */
+        /*white-space: nowrap; /* Optional: prevent wrapping */
+        text-overflow: ellipsis; /* Optional: display ellipsis for overflowing content */
+    }
+    .main-div {
+        background-color: #d5cabd;
+        font-family: sans-serif;
+    }
+</style>
+{%endblock%} {%block body%}
+
+<div>
+    <div class="container">
+        <br />
+        <div style="text-align: center">
+            <h1
+                style="
+                    text-align: center;
+                    color: #845ec2;
+                    margin-top: 10px;
+                    margin-bottom: 20px;
+                    border: 2px solid white;
+                    background-color: #d5cabd;
+                    border-radius: 5px;
+                    box-shadow: 2px 2px 8px #845ec2;
+                    padding: 5px;
+                    text-shadow: 2px 2px 4px white;
+                ">
+                All Items
+            </h1>
+        </div>
+        <br />
+        <div
+            style="
+                color: #634494;
+                font-size: larger;
+                margin-top: 10px;
+                margin-bottom: 20px;
+                border: 2px solid white;
+                border-radius: 5px;
+                background-color: #d5cabd;
+                box-shadow: 2px 2px 8px #845ec2;
+                padding: 5px;
+            ">
+            <a href="{{url_for('show_deleted_items')}}" class="btn btn-primary"
+                >View all deleted Items</a
+            >
+            <a style="margin-left: 20px"
+                >Total no. items in inventory : {{items | length}}</a
+            >
+        </div>
+        <table
+            class="table table-hover align-middle"
+            style="
+                text-align: center;
+                border: 2px solid #845ec2;
+                box-shadow: 2px 2px 5px#bea7e3;
+            ">
+            <thead>
+                <tr>
+                    <th style="color: #845ec2; font-size: 1.4rem">Item</th>
+                    <th style="color: #845ec2; font-size: 1.4rem">
+                        Item ID/Part No.
+                    </th>
+                    <th style="color: #845ec2; font-size: 1.4rem">Category</th>
+                    <th style="color: #845ec2; font-size: 1.4rem">Quantity</th>
+                    <th style="color: #845ec2; font-size: 1.4rem">
+                        Date updated
+                    </th>
+                    <th style="color: #845ec2; font-size: 1.4rem">Location</th>
+                    <th style="color: #845ec2; font-size: 1.4rem">Operation</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %} {%if item.deleted==False%}
+                <tr>
+                    <td class="max-width-td">
+                        <a href="{{url_for('showitem',itemid=item.itemid)}}">
+                            <img
+                                src="{{url_for('static',filename='/media/'+item.itemid|string+'.jpg')}}"
+                                alt="Image"
+                                width="100px"
+                                height="100px" /><br />
+                            <i><strong>{{ item.name }}</strong></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a>Item ID: {{ item.itemid }}</a><br />
+                        <a>Part No.: {{ item.partno }}</a>
+                    </td>
+                    <td>
+                        {%for cat in cats%} {%if cat.catid==item.category%}
+                        <a>{{cat.name}}</a>
+                        {%endif%} {%endfor%}
+                    </td>
+                    <td><a>{{ item.quantity }}</a></td>
+                    <td>
+                        <a>
+                            {{ item.date_stocked.strftime('%Y-%m-%d %H:%M') }}
+                        </a>
+                    </td>
+                    <td><a>{{item.location}}</a></td>
+                    <td>
+                        {%if currentuser.role=='admin'%}
+                        <a
+                            href="{{url_for('update', id=item.itemid)}}"
+                            class="btn btn-primary btn-sm col-5 mb-1">
+                            Update
+                        </a>
+                        <button
+                            type="button"
+                            class="btn btn-danger btn-sm col-5 mb-1"
+                            data-bs-toggle="modal"
+                            data-bs-target="#DeleteModal{{ item.itemid }}">
+                            Delete
+                        </button>
+                        <div
+                            class="modal fade"
+                            id="DeleteModal{{ item.itemid }}"
+                            tabindex="-1"
+                            aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h2
+                                            class="modal-title fs-5"
+                                            id="exampleModalLabel">
+                                            Confirm the deletion.
+                                        </h2>
+                                        <button
+                                            type="button"
+                                            class="btn-close"
+                                            data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Confirm the deletion of item ? {{
+                                        item.name }}
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button
+                                            type="button"
+                                            class="btn btn-secondary btn-sm"
+                                            data-bs-dismiss="modal">
+                                            Close
+                                        </button>
+                                        <a
+                                            type="button"
+                                            class="btn btn-danger btn-sm"
+                                            href="{{url_for('delete', id=item.itemid)}}">
+                                            Delete
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <a
+                            href="{{url_for('stock', id=item.itemid)}}"
+                            class="btn btn-success btn-sm col-5">
+                            Restock
+                        </a>
+                        <form
+                            class="col-5"
+                            method="POST"
+                            action="{{url_for('add_item_cart',item_id=item.itemid)}}"
+                            style="display: inline-block">
+                            <button
+                                type="submit"
+                                class="btn btn-warning me-1 btn-sm col-12">
+                                Order
+                            </button>
+                        </form>
+                        {%else%}
+                        <form
+                            method="POST"
+                            action="{{url_for('request',id=item.itemid)}}"
+                            style="display: inline-block">
+                            <input
+                                type="number"
+                                max="{{ item.quantity }}"
+                                min="0"
+                                id="qty"
+                                name="qty"
+                                class="form-control"
+                                placeholder="Qty"
+                                style="
+                                    width: 70px;
+                                    height: 36px;
+                                    display: inline-block;
+                                    border: 1px solid grey;
+                                " />
+                            <button type="submit" class="btn btn-warning me-1">
+                                Request
+                            </button>
+                        </form>
+                        <form
+                            method="POST"
+                            action="{{url_for('add_item_cart',item_id=item.itemid)}}"
+                            style="display: inline-block">
+                            <button
+                                type="submit"
+                                class="btn btn-light me-1"
+                                style="border: 1px solid grey">
+                                Order
+                            </button>
+                        </form>
+                        {%endif%}
+                    </td>
+                </tr>
+                {%endif%} {% endfor %}
+            </tbody>
+        </table>
+        <br /><br />
+    </div>
+</div>
+
+{%endblock%}

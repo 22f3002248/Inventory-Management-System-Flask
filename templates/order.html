@@ -1,0 +1,114 @@
+{%extends 'base.html'%}
+<link
+    rel="stylesheet"
+    href=" {{ url_for('static', filename='css/userhome.css')}} " />
+{%block head%}
+<title>Cart</title>
+{%endblock%} {%block body%}
+<div>
+    <br />
+    <div class="container">
+        <div class="heading" style="text-align: center">
+            <h1
+                style="
+                    text-align: center;
+                    color: #845ec2;
+                    margin-top: 10px;
+                    margin-bottom: 20px;
+                    border: 2px solid white;
+                    border-radius: 5px;
+                    background-color: #d5cabd;
+                    box-shadow: 2px 2px 8px #845ec2;
+                    padding: 5px;
+                    text-shadow: 2px 2px 4px white;
+                "
+                class="mx-auto">
+                Orders
+            </h1>
+        </div>
+        <br />
+        {%if userorders%} {%for order in userorders%}
+        <div class="card">
+            <div style="text-align: center">
+                <h3>
+                    ~ Order ID : <i><strong>{{order.orderid}}</strong></i> ~
+                    {%if currentuser.role=='admin'%} ~ User ID :
+                    <i>
+                        <strong>
+                            {{order.userid}} | {%for user in users%} {%if
+                            user.id==order.userid%} {{user.username}}
+                            {%endif%}{%endfor%}
+                        </strong> </i
+                    >~ {%endif%} Customer ID :
+                    <i><strong>{{order.customerid}}</strong></i> ~
+                </h3>
+                <a>
+                    {%for customer in customers%} {%if
+                    order.customerid==customer.customerid%} Customer Name :
+                    <i><strong>{{customer.name}}</strong></i
+                    ><br />
+                    Customer Address : {{customer.address}}<br />
+                    Customer GSTIN : {{customer.gstno}} {%endif%} {%endfor%}
+                </a>
+            </div>
+            {%if cartitems%}
+            <ol class="list-group list-group-numbered">
+                {%for ci in cartitems%} {%if ci.cartid==order.cartid%} {% for
+                item in items %} {%if ci.itemid==item.itemid%}
+                <li
+                    class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-4 me-auto">
+                        <div class="fw-bold">{{item.name}}</div>
+                        <a>
+                            <small> Price : {{item.price}} Rs. Per unit </small>
+                        </a>
+                        <br />
+                    </div>
+                    <div class="my-auto" style="display: flex">
+                        <span
+                            class="badge text-bg-primary rounded-pill my-auto"
+                            style="height: 100%">
+                            Qty : {{ci.qty}}
+                        </span>
+                        <span style="margin-left: 5px"> </span>
+                        <span
+                            class="badge text-bg-warning rounded-pill my-auto">
+                            Total Price : <br />{{item.price * ci.qty}} Rs.
+                        </span>
+                        <span style="margin-left: 5px"> </span>
+                    </div>
+                </li>
+                {%endif%} {% endfor %} {%endif%} {% endfor %}
+            </ol>
+            {%else%}
+            <p>Cart is empty !</p>
+            {%endif%}
+            <div style="text-align: center">
+                <a> ~ </a>
+                <a>
+                    Total Quantity :
+                    <i><strong>{{order.totalqty}}</strong></i>
+                </a>
+                <a> ~ | ~ </a>
+                <a>
+                    Total Price :
+                    <i><strong>{{order.totalprice}}</strong></i>
+                </a>
+                <a> ~ | ~ </a>
+                <a>
+                    Date :
+                    <i>
+                        <strong>
+                            {{order.date.strftime('%d-%m-%Y -- %H:%M')}}
+                        </strong>
+                    </i>
+                </a>
+                <a> ~ </a>
+            </div>
+        </div>
+
+        {%endfor%}{%endif%}
+    </div>
+</div>
+
+{%endblock%}

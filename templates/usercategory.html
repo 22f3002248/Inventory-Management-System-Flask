@@ -1,0 +1,150 @@
+{%extends 'base.html'%} {%block head%}
+
+<title>Admin Home</title>
+<style>
+    .max-width-td {
+        max-width: 150px; /* Adjust the value as needed */
+        overflow: hidden; /* Optional: hide overflowing content */
+        /*white-space: nowrap; /* Optional: prevent wrapping */
+        text-overflow: ellipsis; /* Optional: display ellipsis for overflowing content */
+    }
+    .main-div {
+        background-color: #d5cabd;
+        font-family: sans-serif;
+    }
+</style>
+{%endblock%} {%block body%}
+
+<div>
+    <div class="container">
+        <br />
+        <div style="text-align: center">
+            <h1
+                style="
+                    text-align: center;
+                    color: #845ec2;
+                    margin-top: 10px;
+                    margin-bottom: 20px;
+                    border: 2px solid white;
+                    border-radius: 5px;
+                    background-color: #d5cabd;
+                    box-shadow: 2px 2px 8px #845ec2;
+                    padding: 5px;
+                    text-shadow: 2px 2px 4px white;
+                ">
+                {{cat.name}}
+            </h1>
+                    
+        </div>
+        <br />
+        <div
+            style="
+                text-align: center;
+                color: #634494;
+                font-size: larger;
+                margin-top: 10px;
+                margin-bottom: 20px;
+                border: 2px solid white;
+                border-radius: 5px;
+                background-color: #d5cabd;
+                box-shadow: 2px 2px 8px #845ec2;
+                padding: 5px;
+                text-shadow: 2px 2px 4px white;
+            ">
+            <p>{{cat.description}}</p>
+        </div>
+
+        <h3
+            style="
+                text-align: center;
+                color: #845ec2;
+                margin-top: 10px;
+                margin-bottom: 20px;
+                border: 2px solid white;
+                border-radius: 5px;
+                background-color: #d5cabd;
+                box-shadow: 2px 2px 8px #845ec2;
+                padding: 5px;
+                text-shadow: 2px 2px 4px white;
+            ">
+            Items in {{cat.name}}
+        </h3>
+        <div class=""></div>
+        <table class="table table-bordered table-hover">
+            <tr>
+                <th>Item</th>
+                <th>Item ID/Part No.</th>
+                <th>Category</th>
+                <th>Quantity</th>
+                <th>Date updated</th>
+                <th>Operation</th>
+            </tr>
+            {% for item in items %}
+            <tr>
+                <td class="max-width-td">
+                    <img
+                        src="{{url_for('static',filename='ing1.jpg')}}"
+                        alt="Image"
+                        width="100px"
+                        height="100px" /><br />
+                    <i><strong>{{ item.name }}</strong></i>
+                </td>
+                <td>
+                    <a>Item ID: {{ item.itemid }}</a><br />
+                    <a>Part No.: {{ item.partno }}</a>
+                </td>
+                <td>
+                    <a>{{cat.name}}</a>
+                </td>
+                <td><a>{{ item.quantity }}</a></td>
+                <td>
+                    <a> {{ item.date_stocked.strftime('%Y-%m-%d %H:%M') }} </a>
+                </td>
+                <td>
+                    <div
+                        class="card-footer border-dark"
+                        style="display: inline-block">
+                        <form
+                            method="POST"
+                            action="{{url_for('request',id=item.itemid)}}"
+                            style="display: inline-block">
+                            <input
+                                type="number"
+                                max="{{ item.quantity }}"
+                                min="0"
+                                id="qty"
+                                name="qty"
+                                class="form-control"
+                                placeholder="Qty"
+                                style="
+                                    width: 70px;
+                                    height: 36px;
+                                    display: inline-block;
+                                    border: 1px solid grey;
+                                " />
+
+                            <button type="submit" class="btn btn-warning me-1">
+                                Request
+                            </button>
+                        </form>
+                        <form
+                            method="POST"
+                            action="{{url_for('add_item_cart',item_id=item.itemid)}}"
+                            style="display: inline-block">
+                            <button
+                                type="submit"
+                                class="btn btn-primary me-1"
+                                style="border: 1px solid grey">
+                                Order
+                            </button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        <br /><br />
+    </div>
+</div>
+
+{%endblock%}

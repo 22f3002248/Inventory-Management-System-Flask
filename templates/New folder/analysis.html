@@ -1,0 +1,34 @@
+{%extends 'base.html'%}
+{%block head%}
+<title>Statistics</title>
+<link
+    rel="stylesheet"
+    href=" {{ url_for('static', filename='css/analysis.css')}} " />
+{%endblock%} {%block body%}
+<div>
+    <div style="text-align: center">
+        <h1
+            style="
+                text-align: center;
+                color: #845ec2;
+                margin-top: 10px;
+                margin-bottom: 20px;
+                border: 2px solid white;
+                border-radius: 5px;
+                background-color: #d5cabd;
+                box-shadow: 2px 2px 8px #845ec2;
+                padding: 5px;
+                text-shadow: 2px 2px 4px white;
+            ">
+            Statistics
+        </h1>
+        <br>
+        <br>
+    </div>
+    <div class="container1">
+       <div class="box1"> <img id="img1" src="{{url_for('static',filename='charts/admin_piechart.jpg')}}" /></div>
+       <div class="box2" ><img id="img2" src="{{url_for('static',filename='charts/admin_bargraph.jpg')}}" /></div>
+    </div>
+</div>
+
+{%endblock%}

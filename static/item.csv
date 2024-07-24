@@ -1,0 +1,60 @@
+Desktop Computer,DC001,A powerful desktop computer suitable for gaming and professional use. Comes with high-end specs and reliable performance.,50,50000,1,RACK-1/ROW-1
+Laptop,LT002,A sleek and lightweight laptop with a long-lasting battery life. Perfect for students and professionals on the go.,100,60000,1,RACK-1/ROW-2
+All-in-One PC,AIO003,An all-in-one PC that combines a monitor and computer in one compact unit. Ideal for saving space on your desk.,30,70000,1,RACK-1/ROW-3
+Workstation,WS004,A high-performance workstation designed for intensive computing tasks such as rendering and data analysis.,20,80000,1,RACK-1/ROW-5
+27-inch Monitor,MON001,A large 27-inch monitor with crisp display and wide viewing angles. Perfect for multimedia and gaming enthusiasts.,50,20000,2,RACK-2/ROW-1
+UltraWide Monitor,MON002,Experience immersive gaming and productivity with this ultrawide monitor. It offers ample screen space for multitasking.,30,30000,2,RACK-2/ROW-4
+4K Monitor,MON003,A stunning 4K monitor that delivers breathtaking clarity and detail. Ideal for creative professionals and content creators.,40,40000,2,RACK-2/ROW-6
+Curved Monitor,MON004,Immerse yourself in your favorite movies and games with this curved monitor. Its curved design enhances viewing comfort.,20,35000,2,RACK-2/ROW-10
+Wireless Keyboard,KBD001,Enjoy the freedom of wireless connectivity with this sleek and ergonomic keyboard. It offers silent typing and long battery life.,100,3000,3,RACK-3/ROW-1
+Gaming Mouse,MS002,Dominate your opponents with precision and speed using this gaming mouse. It features customizable buttons and RGB lighting effects.,150,4000,3,RACK-3/ROW-2
+Wireless Mouse,MS003,Stay productive on the go with this wireless mouse. Its compact design and reliable performance make it perfect for travel.,200,2000,3,RACK-1/ROW-3
+USB Hub,HUB004,Expand your connectivity options with this USB hub. It allows you to connect multiple devices to your computer with ease.,50,1000,3,RACK-3/ROW-1
+Router,RT001,Ensure fast and reliable internet connection with this high-performance router. It supports multiple devices and advanced security features.,50,5000,4,RACK-4/ROW-1
+Ethernet Switch,SW002,Expand your network connectivity with this Ethernet switch. It offers seamless data transfer and easy installation.,30,3000,4,RACK-4/ROW-3
+Wireless Access Point,WAP003,Extend your wireless network coverage with this wireless access point. It delivers high-speed internet access to remote areas.,40,4000,4,RACK-4/ROW-6
+Network Cable,CBL004,Connect your devices to the network with this durable and high-speed network cable. It ensures stable and fast data transmission.,100,500,4,RACK-4/ROW-9
+External Hard Drive,EHD001,Store and backup your important files with this external hard drive. It offers ample storage capacity and fast data transfer speeds.,50,6000,5,RACK-5/ROW-1
+Solid State Drive,SSD002,Upgrade your computer's performance with this solid-state drive. It provides faster boot times and improved overall system responsiveness.,30,4000,5,RACK-5/ROW-2
+Memory Card,MC003,Expand the storage capacity of your devices with this high-capacity memory card. It's ideal for storing photos videos and music.,100,1000,5,RACK-5/ROW-3
+USB Flash Drive,FD004,Carry your files wherever you go with this portable USB flash drive. Its compact design and plug-and-play functionality make it convenient to use.,200,500,5,RACK-5/ROW-4
+Gaming Keyboard,KBD001,Enhance your gaming experience with this responsive and customizable gaming keyboard. It features mechanical switches and RGB backlighting.,50,5000,6,RACK-6/ROW-1
+Graphic Tablet,GT002,Unleash your creativity with this graphic tablet. It offers precise pen input and pressure sensitivity for digital art and design.,30,6000,6,RACK-6/ROW-6
+Wireless Presenter,WP003,Deliver professional presentations with ease using this wireless presenter. It allows you to navigate slides and control presentations from a distance.,40,3000,6,RACK-6/ROW-7
+Stylus Pen,SP004,Create annotate and navigate with precision using this stylus pen. It's compatible with touchscreen devices and provides a natural writing experience.,100,1000,6,RACK-6/ROW-9
+Inkjet Printer,PRN001,Print high-quality photos and documents with this versatile inkjet printer. It offers fast printing speeds and wireless connectivity.,50,8000,7,RACK-7/ROW-1
+Laser Printer,PRN002,Increase your productivity with this high-speed laser printer. It delivers sharp text and graphics with exceptional clarity and detail.,30,10000,7,RACK-7/ROW-3
+All-in-One Printer,PRN003,Streamline your workflow with this all-in-one printer. It combines printing scanning copying and faxing capabilities in one compact device.,40,12000,7,RACK-7/ROW-4
+Photo Printer,PRN004,Bring your memories to life with this dedicated photo printer. It produces lab-quality photos with vibrant colors and smooth gradients.,20,15000,7,RACK-7/ROW-6
+Graphics Card,GPU001,Upgrade your gaming rig with this powerful graphics card. It offers immersive gaming experiences with smooth frame rates and stunning visuals.,50,20000,8,RACK-8/ROW-1
+CPU Processor,CPU002,Unlock maximum performance with this high-performance CPU processor. It features multiple cores and advanced technologies for demanding tasks.,30,25000,8,RACK-8/ROW-5
+Motherboard,MB003,Build your dream PC with this feature-packed motherboard. It offers robust connectivity options and supports the latest hardware components.,40,15000,8,RACK-8/ROW-7
+RAM Memory,RAM004,Boost your system's multitasking capabilities with this high-speed RAM memory. It ensures smooth and responsive performance for your applications.,100,5000,8,RACK-8/ROW-8
+Headphones,HP001,Immerse yourself in your favorite music with these premium headphones. They deliver rich detailed sound and offer comfortable long-term wear.,50,3000,9,RACK-9/ROW-1
+Speakers,SPK002,Enhance your audio experience with these powerful speakers. They deliver room-filling sound and offer versatile connectivity options.,30,5000,9,RACK-9/ROW-4
+Microphone,MIC003,Capture crystal-clear audio recordings with this professional-grade microphone. It's perfect for podcasting streaming and voiceovers.,40,4000,9,RACK-9/ROW-5
+Soundbar,SBR004,Upgrade your TV's audio with this sleek soundbar. It delivers immersive sound and offers convenient wireless streaming from your devices.,20,8000,9,RACK-9/ROW-6
+UPS (Uninterruptible Power Supply),UPS001,Ensure continuous power supply to your devices with this UPS. It provides backup power during outages and protects against voltage fluctuations.,50,10000,10,RACK-10/ROW-1
+Surge Protector,SP002,Protect your electronics from power surges and spikes with this surge protector. It features multiple outlets and offers reliable surge protection for your devices.,30,2000,10,RACK-10/ROW-3
+Power Strip,PS003,Expand your power outlets with this versatile power strip. It features multiple sockets and a durable design for convenient use in home or office.,40,1000,10,RACK-10/ROW-4
+Extension Cord,EC004,Extend the reach of your electrical devices with this extension cord. It offers flexible placement options and is suitable for indoor and outdoor use.,20,500,10,RACK-10/ROW-5
+Operating System License,OSL001,Get a genuine license for your operating system with this software license. It ensures compliance with software regulations and provides access to updates.,50,5000,11,-
+Antivirus License,AV002,Protect your computer from viruses and malware with this antivirus license. It offers real-time threat detection and automatic updates for comprehensive security.,30,3000,11,-
+Office Suite License,OSL003,Access essential productivity tools with this office suite license. It includes applications for word processing spreadsheet management and presentations.,40,4000,11,-
+Graphic Design Software License,GDS004,Unleash your creativity with this graphic design software license. It provides professional-grade tools for digital art illustration and photo editing.,20,6000,11,-
+HDMI Cable,CBL001,Connect your devices to high-definition displays with this HDMI cable. It delivers crystal-clear audio and video signals for an immersive viewing experience.,50,1000,12,RACK-11/ROW-1
+Ethernet Cable,CBL002,Ensure fast and reliable network connections with this Ethernet cable. It supports high-speed data transfer and offers durable construction for long-lasting use.,30,500,12,RACK-11/ROW-5
+USB Cable,CBL003,Charge and sync your devices with this USB cable. It's compatible with a wide range of devices and offers fast data transfer speeds.,40,300,12,RACK-11/ROW-6
+Audio Cable,CBL004,Enjoy high-quality audio playback with this audio cable. It provides clear and distortion-free sound transmission for your audio devices.,20,200,12,RACK-11/ROW-8
+Laptop Bag,BAG001,Protect your laptop on the go with this stylish laptop bag. It features padded compartments and multiple pockets for organization.,50,2000,13,RACK-12/ROW-9
+Phone Case,CAS002,Keep your phone safe from scratches and drops with this durable phone case. It offers slim-profile protection and precise cutouts for ports and buttons.,30,500,13,RACK-12/ROW-2
+Mouse Pad,MP003,Enhance your mouse's precision and tracking with this mouse pad. It features a smooth surface and a non-slip base for optimal performance.,40,200,13,RACK-12/ROW-4
+Screen Protector,SCP004,Guard your device's screen against scratches and smudges with this screen protector. It offers crystal-clear visibility and easy installation.,20,300,13,RACK-12/ROW-5
+Smart Bulb,BLB001,Transform your home lighting with this smart bulb. It offers customizable brightness and color options controllable via your smartphone or voice commands.,50,1000,14,RACK-13/ROW-1
+Smart Plug,PLG002,Turn any device into a smart device with this smart plug. It allows you to remotely control devices and set schedules using your smartphone.,30,800,14,RACK-13/ROW-3
+Smart Speaker,SPK003,Bring the power of voice control to your home with this smart speaker. It offers hands-free access to music news and information from popular voice assistants.,40,3000,14,RACK-13/ROW-5
+Smart Thermostat,THR004,Optimize your home's energy efficiency with this smart thermostat. It learns your preferences and adjusts the temperature automatically for comfort and savings.,20,5000,14,RACK-13/ROW-7
+Fitness Tracker,FT001,Track your fitness goals and stay motivated with this fitness tracker. It monitors your activity heart rate and sleep patterns for a healthier lifestyle.,50,3000,15,RACK-14/ROW-1
+Smartwatch,SW002,Stay connected and organized on the go with this smartwatch. It offers notifications apps and health tracking features in a sleek and stylish design.,30,6000,15,RACK-14/ROW-3
+Wireless Earbuds,WEB003,Enjoy wireless freedom and immersive sound with these wireless earbuds. They offer long battery life and customizable fit for all-day comfort.,40,4000,15,RACK-14/ROW-4
+VR Headset,VRH004,Immerse yourself in virtual worlds with this VR headset. It offers stunning visuals and immersive experiences for gaming entertainment and more.,20,8000,15,RACK-14/ROW-6

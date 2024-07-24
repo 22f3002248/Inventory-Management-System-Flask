@@ -1,0 +1,153 @@
+{%extends 'base.html'%} {%block head%}
+
+<title>Show All Requests</title>
+<style>
+    .max-width-td {
+        max-width: 150px; /* Adjust the value as needed */
+        overflow: hidden; /* Optional: hide overflowing content */
+        /*white-space: nowrap; /* Optional: prevent wrapping */
+        text-overflow: ellipsis; /* Optional: display ellipsis for overflowing content */
+    }
+    .main-div {
+        background-color: #d5cabd;
+        font-family: sans-serif;
+    }
+</style>
+{%endblock%} {%block body%}
+
+<div>
+    <div class="container">
+        <br />
+        <div style="text-align: center">
+            <h1
+                style="
+                    text-align: center;
+                    color: #845ec2;
+                    margin-top: 10px;
+                    margin-bottom: 20px;
+                    border: 2px solid white;
+                    background-color: #d5cabd;
+                    border-radius: 5px;
+                    box-shadow: 2px 2px 8px #845ec2;
+                    padding: 5px;
+                    text-shadow: 2px 2px 4px white;
+                ">
+                All Requests
+            </h1>
+        </div>
+        <br />
+        {% if irs%}
+        <table
+            class="table table-hover align-middle"
+            style="
+                text-align: center;
+                border: 2px solid #845ec2;
+                box-shadow: 2px 2px 5px#bea7e3;
+            ">
+            <tr>
+                <th style="color: #845ec2; font-size: 1.4rem">User</th>
+                <th style="color: #845ec2; font-size: 1.4rem">Item</th>
+                <th style="color: #845ec2; font-size: 1.4rem">Quantity</th>
+                <th style="color: #845ec2; font-size: 1.4rem">Operation</th>
+            </tr>
+            {%for ir in irs%} {% for item in items %} {%if
+            ir.itemid==item.itemid%} {%if ir.fulfilled==False%}
+            <tr>
+                <td class="max-width-td">
+                    {%for user in users%}{%if ir.userid==user.id%}
+                    <a
+                        >User ID : <i><strong>{{user.id}}</strong></i>
+                    </a>
+                    <br />
+                    <a
+                        >Username : <i><strong>{{user.username}}</strong></i>
+                    </a>
+                    {%endif%}{%endfor%}
+                </td>
+                <td>
+                    <a>
+                        <i><strong>{{ item.name }}</strong></i>
+                    </a>
+                    <br />
+                    <a>Item ID: {{ item.itemid }}</a><br />
+                    <a>Part No.: {{ item.partno }}</a><br />
+                    {%for cat in cats%} {%if cat.catid==item.category%}
+                    <a>
+                        <i><strong>Category : {{cat.name}}</strong></i>
+                    </a>
+                    {%endif%} {%endfor%}
+                </td>
+                <td>
+                    <a
+                        >Available :
+                        <strong><i>{{ item.quantity }}</i></strong></a
+                    ><br />
+                    <a
+                        >Requested : <strong><i>{{ ir.qty }}</i></strong></a
+                    >
+                </td>
+                <td>
+                    <a
+                        href="{{url_for('acceptrequest', userid=ir.userid,itemid=item.itemid)}}"
+                        class="btn btn-primary btn-sm col-4 mb-1">
+                        Accept
+                    </a>
+                    <br />
+                    <button
+                        type="button"
+                        class="btn btn-danger btn-sm col-4 mb-1"
+                        data-bs-toggle="modal"
+                        data-bs-target="#DeleteModal{{ item.itemid }}">
+                        Reject
+                    </button>
+                    <div
+                        class="modal fade"
+                        id="DeleteModal{{ item.itemid }}"
+                        tabindex="-1"
+                        aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1
+                                        class="modal-title fs-5"
+                                        id="exampleModalLabel">
+                                        Confirm the rejection.
+                                    </h1>
+                                    <button
+                                        type="button"
+                                        class="btn-close"
+                                        data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    Confirm the reject of item ? {{ item.name }}
+                                </div>
+                                <div class="modal-footer">
+                                    <button
+                                        type="button"
+                                        class="btn btn-secondary btn-sm"
+                                        data-bs-dismiss="modal">
+                                        Close
+                                    </button>
+                                    <a
+                                        type="button"
+                                        class="btn btn-danger btn-sm"
+                                        href="{{url_for('rejectrequest', userid=ir.userid,itemid=item.itemid)}}">
+                                        Reject
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                </td>
+            </tr>
+            {%endif%} {%endif%}{% endfor %}{% endfor %}
+        </table>
+        {%endif%}
+        <br /><br />
+    </div>
+</div>
+
+{%endblock%}

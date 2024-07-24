@@ -1,0 +1,35 @@
+{%extends 'base.html'%} {%block head%}
+<title>Login</title>
+<link
+    rel="stylesheet"
+    href=" {{ url_for('static', filename='css/addnewcategory.css')}} " />
+{%endblock%} {%block body%}
+<br /><br />
+<div class="container">
+    <div class="form-main">
+        <h1>Add New Category</h1>
+        <form method="POST">
+            <div class="form-in">
+                <input
+                    id="category"
+                    name="category"
+                    type="text"
+                    placeholder="Category Name"
+                    required />
+            </div>
+            <div class="form-desc">
+                <textarea
+                    id="description"
+                    name="description"
+                    placeholder="Category Description"
+                    rows="3"
+                    cols="30"
+                    required></textarea>
+            </div>
+            <div class="form-but">
+                <button class="btn" type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+{%endblock%}

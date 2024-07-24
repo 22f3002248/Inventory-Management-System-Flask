@@ -1,0 +1,80 @@
+{%extends 'base2.html'%} {%block head%}
+<title>Landing Page</title>
+<link
+    href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css"
+    rel="stylesheet" />
+<style>
+    body,
+    html {
+        height: 100%;
+        margin: 0;
+        font-family: consolas;
+    }
+    .bg-image {
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        color: white;
+        text-shadow: 2px 2px 4px #000000;
+    }
+    .overlay {
+        position: absolute;
+        bottom: 0;
+        /*background: rgba(0, 0, 0, 0.5); /* Black background with opacity */
+        color: #000000;
+        width: 100%;
+        padding: 30px;
+    }
+    .shad {
+        text-shadow: 1px 1px 5px white;
+    }
+    .card {
+        width: 600px;
+        height: 650px;
+        border: none;
+    }
+    p {
+        font-size: 25px;
+        text-align: center;
+    }
+    .btn {
+        font-size: 20px;
+        border-radius: 25px;
+    }
+</style>
+
+{%endblock%} {%block body%}
+<div class="">
+    <img src="{{ url_for('static', filename='INVLPBG.jpg')}}" />
+    <div class="overlay">
+        <div class="card" style="background-color: rgba(255, 255, 255, 0.8)">
+            <div
+                class="card-body my-auto"
+                style="align-items: center; text-align: center">
+                <br /><br /><br /><br /><br />
+                <h1 class="shad my-auto">
+                    Inventory Management<br />
+                    Web Application
+                </h1>
+                <br /><br /><br />
+                <p class="shad my-auto" style="text-align: center">
+                    Efficiently track
+                </p>
+                <p class="shad my-auto" style="text-align: center">
+                    and manage your inventory.
+                </p>
+                <br /><br />
+                <a
+                    href="{{url_for('login')}}"
+                    class="btn btn-primary me-2 my-auto"
+                    >Login</a
+                >
+                <a href="{{url_for('signup')}}" class="btn btn-primary my-auto"
+                    >Sign Up</a
+                >
+            </div>
+        </div>
+    </div>
+</div>
+
+{%endblock%}

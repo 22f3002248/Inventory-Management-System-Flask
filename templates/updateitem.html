@@ -1,0 +1,79 @@
+{%extends 'base.html'%} {%block head%}
+<title>Update | {{item.name}}</title>
+<link
+    rel="stylesheet"
+    href=" {{ url_for('static', filename='css/updateitem.css')}} " />
+{%endblock%} {%block body%}
+<br /><br /><br /><br /><br /><br /><br />
+<div class="container">
+    <div class="form-main">
+        <h1>Update Product</h1>
+        <form method="POST">
+            <div class="form-in">
+                <label for="name">Item Name :</label>
+                <input
+                    id="name"
+                    name="name"
+                    type="text"
+                    placeholder="Item Name"
+                    value="{{item.name}}"
+                    required />
+                <label for="partno">Part No. :</label>
+                <input
+                    id="partno"
+                    name="partno"
+                    type="text"
+                    placeholder="Part No."
+                    value="{{item.partno}}"
+                    required />
+                <label for="description">Item Description :</label>
+                <textarea
+                    id="description"
+                    name="description"
+                    rows="5"
+                    cols="30">
+{{item.description}}
+                </textarea>
+                <label for="qty">Quantity :</label>
+                <input
+                    id="qty"
+                    name="qty"
+                    type="number"
+                    placeholder="Quantity"
+                    value="{{item.quantity}}"
+                    required />
+                <label for="qty">Price :</label>
+                <input
+                    id="price"
+                    name="price"
+                    type="number"
+                    placeholder="Price"
+                    value="{{item.price}}"
+                    step=".01"
+                    required />
+                <label for="qty">Location :</label>
+                <input
+                    id="location"
+                    name="location"
+                    type="text"
+                    placeholder="Location"
+                    value="{{item.location}}" />
+            </div>
+            <div class="form-set">
+                <label for="category">Category :</label>
+                <select id="category" name="category" class="form-select">
+                    {% for cat in categories %}{% if cat.catid==item.category %}
+                    <option value="{{cat.catid}}" selected>{{cat.name}}</option>
+                    {% elif cat.catid!=item.category%}
+                    <option value="{{cat.catid}}">{{cat.name}}</option>
+                    {%endif%} {% endfor %}
+                </select>
+            </div>
+            <div class="form-but">
+                <button class="btn btn-primary" type="submit">Update</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{%endblock%}

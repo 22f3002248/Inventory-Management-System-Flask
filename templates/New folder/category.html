@@ -1,0 +1,159 @@
+{%extends 'base.html'%} {%block head%}
+
+<title>Admin Home</title>
+<style>
+    .max-width-td {
+        max-width: 150px; /* Adjust the value as needed */
+        overflow: hidden; /* Optional: hide overflowing content */
+        /*white-space: nowrap; /* Optional: prevent wrapping */
+        text-overflow: ellipsis; /* Optional: display ellipsis for overflowing content */
+    }
+    .main-div {
+        background-color: #d5cabd;
+        font-family: sans-serif;
+    }
+</style>
+{%endblock%} {%block body%}
+
+<div>
+    <div class="container">
+        <br />
+        <div class="heading" style="text-align: center">
+            <h1
+                style="
+                    text-align: center;
+                    font-weight: bold;
+                    border: 2px solid black;
+                    box-shadow: 2px 2px 5px black;
+                    display: inline-block;
+                    padding: 1rem;
+                "
+                class="mx-auto">
+                {{cat.name}}
+            </h1>
+        </div>
+        <br />
+        <div>
+            <p>{{cat.description}}</p>
+        </div>
+        <div>
+            <a class="btn btn-primary" href="{{url_for('add_new_product')}}">
+                Add new product
+            </a>
+            <a class="btn btn-primary" href="{{url_for('add_new_category')}}">
+                Add new catergory
+            </a>
+            <a style="margin-right: 200px"></a>
+            <a
+                class="btn btn-primary"
+                href="{{url_for('show_all_categories')}}">
+                Show all products
+            </a>
+        </div>
+
+        <h3>Items in {{cat.name}}</h3>
+        <div class=""></div>
+        <table class="table table-bordered" style="border: 2px solid black">
+            <tr>
+                <th>Item</th>
+                <th>Item ID/Part No.</th>
+                <th>Category</th>
+                <th>Quantity</th>
+                <th>Date updated</th>
+                <th>Operation</th>
+            </tr>
+            {% for item in items %}
+            <tr>
+                <td class="max-width-td">
+                    <img
+                        src="{{url_for('static',filename='ing1.jpg')}}"
+                        alt="Image"
+                        width="100px"
+                        height="100px" /><br />
+                    <i><strong>{{ item.name }}</strong></i>
+                </td>
+                <td>
+                    <a>Item ID: {{ item.itemid }}</a><br />
+                    <a>Part No.: {{ item.partno }}</a>
+                </td>
+                <td>
+                    <a>{{cat.name}}</a>
+                </td>
+                <td><a>{{ item.quantity }}</a></td>
+                <td>
+                    <a> {{ item.date_stocked.strftime('%Y-%m-%d %H:%M') }} </a>
+                </td>
+                <td>
+                    <a
+                        href="{{url_for('update', id=item.itemid)}}"
+                        class="btn btn-primary btn-sm col-4 mb-1">
+                        Update
+                    </a>
+                    <button
+                        type="button"
+                        class="btn btn-danger btn-sm col-4 mb-1"
+                        data-bs-toggle="modal"
+                        data-bs-target="#DeleteModal{{ item.itemid }}">
+                        Delete
+                    </button>
+                    <div
+                        class="modal fade"
+                        id="DeleteModal{{ item.itemid }}"
+                        tabindex="-1"
+                        aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1
+                                        class="modal-title fs-5"
+                                        id="exampleModalLabel">
+                                        Confirm the deleteion.
+                                    </h1>
+                                    <button
+                                        type="button"
+                                        class="btn-close"
+                                        data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    Confirm the deletion of item ? {{ item.name
+                                    }}
+                                </div>
+                                <div class="modal-footer">
+                                    <button
+                                        type="button"
+                                        class="btn btn-secondary btn-sm"
+                                        data-bs-dismiss="modal">
+                                        Close
+                                    </button>
+                                    <a
+                                        type="button"
+                                        class="btn btn-danger btn-sm"
+                                        href="{{url_for('delete', id=item.itemid)}}">
+                                        Delete
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <a
+                        href="{{url_for('stock', id=item.itemid)}}"
+                        class="btn btn-success btn-sm col-4">
+                        Restock
+                    </a>
+                    <a
+                        href="{{url_for('sell', id=item.itemid)}}"
+                        class="btn btn-warning btn-sm col-4">
+                        Sell
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        <br /><br />
+    </div>
+</div>
+
+{%endblock%}

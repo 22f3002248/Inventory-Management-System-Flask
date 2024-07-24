@@ -1,0 +1,52 @@
+{%extends 'base.html'%} {%block head%}
+
+<title>Home</title>
+
+{%endblock%} {%block body%}
+
+<div>
+  <div class="container">
+    <div class="card">
+      <h1>Home</h1>
+    </div>
+    <div class="card">
+      <div>
+        <a class="btn btn-primary" href="{{url_for('add_new_product')}}"
+          >Add new product</a
+        >
+      </div>
+    </div>
+    <div class="card">
+      <h3>All Items</h3>
+      <table class="table table-hover">
+        <tr>
+          <th>Item ID</th>
+          <th>Name</th>
+          <th>Part No.</th>
+          <th>Date Updated</th>
+          <th>Quantity</th>
+          <th>Category</th>
+          <th>Operations</th>
+        </tr>
+        {% for item in items %}
+        <tr>
+          <td>{{item.itemid}}</td>
+          <td>{{item.name}}</td>
+          <td>{{item.partno}}</td>
+          <td>{{item.date_stocked}}</td>
+          <td>{{item.quantity}}</td>
+          {%for cat in cats%} {%if cat.catid==item.category%}
+          <td>{{cat.name}}</td>
+          {%endif%} {%endfor%}
+          <td>
+            <a href="{{url_for('update', id=item.itemid)}}">Update</a>
+            <a href="{{url_for('stock', id=item.itemid)}}">Stock</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+</div>
+
+{%endblock%}

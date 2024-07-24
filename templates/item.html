@@ -1,0 +1,321 @@
+{%extends 'base.html'%} {%block head%}
+<title>Item</title>
+<style>
+    .desc i {
+        font-size: 1.3rem;
+        color: #845ec2;
+    }
+</style>
+
+{%endblock%} {%block body%}
+<div>
+    <div style="text-align: center">
+        <h1
+            style="
+                text-align: center;
+                color: #845ec2;
+                margin-top: 10px;
+                margin-bottom: 20px;
+                border: 2px solid white;
+                border-radius: 5px;
+                background-color: #d5cabd;
+                box-shadow: 2px 2px 8px #845ec2;
+                padding: 5px;
+                text-shadow: 2px 2px 4px white;
+            ">
+            {{item.name}}
+        </h1>
+    </div>
+    <div
+        class="container"
+        style="display: flex; justify-content: center; height: 600px">
+        <div
+            class="card"
+            style="
+                display: flex;
+                flex-direction: column;
+                width: 450px;
+                align-content: center;
+                justify-content: center;
+                margin-left: 20px;
+                background-color: white;
+                border: none;
+                border-radius: 0;
+                box-shadow: 2px 2px 8px #845ec2;
+                border: 2px solid white;
+            ">
+            <img
+                src="{{url_for('static',filename='/media/'+item.itemid|string+'.jpg')}}"
+                alt="Image"
+                height="300px"
+                width="300px"
+                style="
+                    margin: 0 auto;
+                    box-shadow: 4px 4px 15px rgb(205, 204, 204);
+                    border-radius: 10px;
+                "
+                ; />
+
+            <h2 style="color: #845ec2">
+                <p style="text-align: center; margin-top: 15px">
+                    <strong>{{ item.name }}</strong>
+                </p>
+            </h2>
+            {%if currentuser.role=='admin'%}
+            <div style="text-align: center">
+                <a
+                    href="{{url_for('update', id=item.itemid)}}"
+                    class="btn btn-primary btn-sm col-2 mb-1">
+                    Update
+                </a>
+
+                <button
+                    type="button"
+                    class="btn btn-danger btn-sm col-2 mb-1"
+                    data-bs-toggle="modal"
+                    data-bs-target="#DeleteModal{{ item.itemid }}">
+                    Delete
+                </button>
+            </div>
+            <div
+                class="modal fade"
+                id="DeleteModal{{ item.itemid }}"
+                tabindex="-1"
+                aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2 class="modal-title fs-5" id="exampleModalLabel">
+                                Confirm the deletion.
+                            </h2>
+                            <button
+                                type="button"
+                                class="btn-close"
+                                data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Confirm the deletion of item ? {{ item.name }}
+                        </div>
+                        <div class="modal-footer">
+                            <button
+                                type="button"
+                                class="btn btn-secondary btn-sm"
+                                data-bs-dismiss="modal">
+                                Close
+                            </button>
+                            <a
+                                type="button"
+                                class="btn btn-danger btn-sm"
+                                href="{{url_for('delete', id=item.itemid)}}">
+                                Delete
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center">
+                <a
+                    href="{{url_for('stock', id=item.itemid)}}"
+                    class="btn btn-success btn-sm col-2 mb-1"
+                    style="display: inline-block">
+                    Restock
+                </a>
+                <form
+                    class="col-2"
+                    method="POST"
+                    action="{{url_for('add_item_cart',item_id=item.itemid)}}"
+                    style="display: inline-block">
+                    <button
+                        type="submit"
+                        class="btn btn-warning btn-sm col-12 mb-1">
+                        Order
+                    </button>
+                </form>
+            </div>
+            {%else%}
+            <form
+                method="POST"
+                action="{{url_for('request',id=item.itemid)}}"
+                style="display: inline-block; margin-left: 100px">
+                <input
+                    type="number"
+                    max="{{ item.quantity }}"
+                    min="0"
+                    id="qty"
+                    name="qty"
+                    class="form-control"
+                    placeholder="Qty"
+                    style="
+                        width: 70px;
+                        height: 36px;
+                        display: inline-block;
+                        margin-left: 40px;
+                        border: 1px solid grey;
+                    " />
+                <button type="submit" class="btn btn-warning me-1">
+                    Request
+                </button>
+            </form>
+            <br />
+            <form
+                class="col-5"
+                method="POST"
+                action="{{url_for('add_item_cart',item_id=item.itemid)}}"
+                style="
+                    display: inline-block;
+                    text-align: center;
+                    margin: 0 auto;
+                ">
+                <button type="submit" class="btn btn-warning me-1 btn-sm col-5">
+                    Order
+                </button>
+            </form>
+            {%endif%}
+        </div>
+        <div
+            class="card"
+            style="
+                display: flex;
+                flex-direction: column;
+                width: 550px;
+
+                border: none;
+                border-radius: 0;
+                box-shadow: 2px 2px 8px #845ec2;
+            ">
+            <br />
+            <div class="desc" style="margin: 30px; height: 300px">
+                <i>
+                    <strong><p>Description : {{item.description}}</p> </strong>
+                </i>
+                <hr style="margin: 0; color: #845ec2" />
+                <i>
+                    <strong><p>Item ID : {{ item.itemid }}</p> </strong>
+                </i>
+
+                <i>
+                    <strong><p>Part No.: {{ item.partno }}</p> </strong>
+                </i>
+                {%for cat in cats%} {%if cat.catid==item.category%}
+                <i>
+                    <strong> <p>{{cat.name}}</p></strong>
+                </i>
+                {%endif%} {%endfor%}
+
+                <i>
+                    <strong>
+                        <p>Available Qty. : {{ item.quantity }}</p>
+                    </strong>
+                </i>
+
+                <i>
+                    <strong>
+                        <p>Price : {{ item.price }}</p>
+                    </strong>
+                </i>
+                <i>
+                    <strong>
+                        <p>Location in warehouse : {{item.location}}</p>
+                    </strong>
+                </i>
+                <i>
+                    <strong>
+                        <p>
+                            Date Stocked : {{
+                            item.date_stocked.strftime('%Y-%m-%d %H:%M') }}
+                        </p>
+                    </strong>
+                </i>
+                <hr style="margin: 0; color: #845ec2" />
+            </div>
+        </div>
+    </div>
+    <!-- <div style="display: flex; border:2px solid black;
+          width:1050px;
+          margin:0 auto;
+          background-color:white; 
+         padding:20px;
+
+         "> -->
+    <div
+        class="card"
+        style="
+            display: inline-block;
+            box-shadow: 2px 2px 8px #845ec2;
+            background-color: white;
+            margin-left: 265px;
+            border: none;
+        ">
+        <div style="text-align: center">
+            <br />
+            <h3 style="color: #845ec2; font-size: 2rem; font-weight: 700">
+                Notes
+            </h3>
+            <form
+                style="padding: 15px; width: 400px"
+                action="{{url_for('addnote',itemid=item.itemid)}}"
+                method="POST">
+                <input
+                    name="notetitle"
+                    id="notetitle"
+                    placeholder="Note Title"
+                    style="margin-bottom: 10px" />
+                <br />
+                <br />
+
+                <textarea
+                    name="notetext"
+                    id="notetext"
+                    placeholder="Note Text"
+                    style="width: 300px"></textarea>
+                <br />
+                <br />
+                <button
+                    style="margin-top: 10px"
+                    type="submit"
+                    class="btn btn-primary">
+                    Add Note
+                </button>
+            </form>
+        </div>
+    </div>
+    {%if notes | length > 0 %}
+    <div
+        class="card"
+        style="
+            background-color: white;
+            display: inline-block;
+            padding: 15px;
+            position: relative;
+            top: -221px;
+            box-shadow: 2px 2px 8px #845ec2;
+            border: none;
+        ">
+        <div class="list-group" style="width: 560px; padding: 8px">
+            {%for note in notes %}
+            <a class="list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">{{note.notetitle}}</h5>
+
+                    <a
+                        class="btn btn-danger btn-sm"
+                        href="{{url_for('deletenote', noteid=note.noteid)}}">
+                        <small>Delete Note</small>
+                    </a>
+                </div>
+                <p class="mb-1">{{note.notetext}}</p>
+                {%if currentuser.role=='admin'%}
+                <p>User ID : {{note.userid}}</p>
+                {%endif%}
+                <small class="text-body-secondary">
+                    Added on : {{note.date.strftime('%d-%m-%Y -- %H:%M') }}
+                </small>
+            </a>
+
+            {%endfor%}
+        </div>
+    </div>
+</div>
+{%endif%} {%endblock%}

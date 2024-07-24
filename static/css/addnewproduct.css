@@ -1,0 +1,96 @@
+.container {
+    height: 500px;
+    width: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+body {
+    background-color: #b0a8b9;
+}
+h1 {
+    color: #845ec2;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border: 2px solid white;
+    border-radius: 5px;
+    padding: 5px;
+    box-shadow: 2px 2px 8px #845ec2;
+    text-shadow: 2px 2px 4px white;
+}
+.form-main {
+    height: 700px;
+    width: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid white;
+    background-color: #d5cabd;
+    flex-direction: column;
+    border-radius: 1rem;
+    box-shadow: 2px 2px 8px white;
+}
+.form-in {
+    height: 400px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-content: space-evenly;
+    justify-content: center;
+    align-items: center;
+    margin-left: 15px;
+    margin-bottom: 20px;
+    background-color: #d5cabd;
+}
+.form-in input {
+    width: 250px;
+    height: 40px;
+    margin-top: 20px;
+    border-radius: 0.5rem;
+    border: white;
+}
+
+.form-in textarea {
+    width: 250px;
+    margin-top: 20px;
+    border-radius: 0.5rem;
+    border: white;
+}
+
+.form-set {
+    width: 400px;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-left: 15px;
+    margin-bottom: 10px;
+    background-color: #d5cabd;
+}
+.form-set select {
+    width: 250px;
+    height: 40px;
+    color: rgb(92, 106, 120);
+}
+
+.form-but {
+    width: 400px;
+    display: flex;
+    justify-content: center;
+    margin-left: 15px;
+    margin-bottom: 20px;
+    background-color: #d5cabd;
+}
+.form-but button {
+    width: 250px;
+    height: 40px;
+    color: white;
+    background-color: #845ec2;
+    font-weight: bold;
+    border-radius: 0.5rem;
+    border: 1px solid white;
+}
+
+.form-but button:hover {
+    background-color: white;
+    color: #744eb0;
+}
